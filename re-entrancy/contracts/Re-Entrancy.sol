@@ -14,5 +14,6 @@ contract GoodContract {
 
         (bool sent, ) = msg.sender.call{value: balances[msg.sender]}("");
         require(sent, "Failed to send Eth");
+        balances[msg.sender] = 0;
     }
 }
