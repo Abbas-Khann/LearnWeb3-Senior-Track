@@ -19,7 +19,10 @@ describe("delegatecall Attack", () => {
 
     await deployedVictimContract.deployed();
     const victimContractAddress = await deployedVictimContract.address;
-
+    console.log(
+      "Deployed Victim contract owner address here: ",
+      await deployedVictimContract.owner()
+    );
     // Deploy the Attacker contract and call the attack function
     const attackerContract = await ethers.getContractFactory("Hacker");
     const deployedAttackerContract = await attackerContract.deploy(
@@ -29,10 +32,22 @@ describe("delegatecall Attack", () => {
 
     const txn = await deployedAttackerContract.attack();
     await txn.wait();
-
+    console.log(
+      "Checking the address of the attacker contract here :",
+      await deployedAttackerContract.address
+    );
+    console.log(
+      "Deployed Victim contract owner address after being hacked: ",
+      await deployedVictimContract.owner()
+    );
+    if (
+      (await deployedAttackerContract.address) ===
+      (await deployedVictimContract.owner())
+    ) {
+      console.log("GOTCHA BITCH!!!");
+    }
     expect(await deployedVictimContract.owner()).to.equal(
       deployedAttackerContract.address
     );
-    console.log("LFG!!!");
   });
 });
