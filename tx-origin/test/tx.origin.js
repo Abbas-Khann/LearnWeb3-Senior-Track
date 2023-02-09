@@ -4,7 +4,7 @@ const { ethers } = require("hardhat");
 describe("tx.origin hacked", () => {
   it("Should be able to hack the victim contract and claim ownership", async () => {
     // fetching an address here from hardhat
-    const [_, addressOne] = ethers.getSigners();
+    const [_, addressOne] = await ethers.getSigners();
 
     // Time to deploy the contracts and attack it.
     const victimFactory = await ethers.getContractFactory("Victim");
