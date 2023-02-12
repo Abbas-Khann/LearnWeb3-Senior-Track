@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@openzeppelin/contracts-upgradeable");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
