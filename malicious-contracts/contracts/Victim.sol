@@ -5,7 +5,7 @@ import "./Helper.sol";
 contract Victim {
     Helper helper;
 
-    constructor(address _helper) {
+    constructor(address _helper) payable {
         helper = Helper(_helper);
     }
 
