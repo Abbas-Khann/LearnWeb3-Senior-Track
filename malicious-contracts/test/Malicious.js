@@ -1,5 +1,5 @@
-const { expect } = reqiure("chai");
-const { ethers } = reqiure("hardhat");
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
 
 describe("Mailicious External Contract", () => {
   it("Should change the owner of the victim contract", async () => {
@@ -26,6 +26,7 @@ describe("Mailicious External Contract", () => {
     const checkEligibility = await deployedVictimContract
       .connect(addr1)
       .isUserEligible();
+    console.log("Address eligibility", checkEligibility);
     expect(checkEligibility).to.equal(false);
   });
 });
